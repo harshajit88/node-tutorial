@@ -1,20 +1,9 @@
-const http = require('http');
-const os = require('os');
+const {writeFileSync} = require('fs');
 
-const server = http.createServer((req, res) => {
-    if (req.url === '/'){
-        res.end('Welcome to homepage');
-    }
-    if (req.url === '/about'){
-        res.end('Welcome to the about page');
-    } 
-    res.end(
-        `
-        <h1>Oops!!<h1>
-        <p>Page not found</p>
-        <a href="/">Back Home</a>
-        `
-    )
-});
-
-server.listen(5000);
+for (var i = 0; i< 10000; i++) {
+    writeFileSync(
+        './content/big.txt',
+        `Hello this is ${i}\n`,
+        {flag : 'a'}
+    );
+}
